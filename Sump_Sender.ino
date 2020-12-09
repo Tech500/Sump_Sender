@@ -54,7 +54,7 @@
 uint8_t connection_state = 0;
 uint16_t reconnect_interval = 10000;
 
-EMailSender emailSend("ab9nq.william@gmail.com", "Red##$dog60$");
+EMailSender emailSend("gmailaccount@gmail.com", "Gmailpassword");
 
 uint8_t WiFiConnect(const char* nSSID = nullptr, const char* nPassword = nullptr)
 {
@@ -891,8 +891,8 @@ void sendRequestURL()  //Triggers cellphone SMS alert and email alert.
     	message.subject = "Warning!!!";
       message.message = "Sump Pump ///////////////Alert high water level warning!";
     
-    	EMailSender::Response resp = emailSend.send("3173405675@vtext.com", message);
-    	emailSend.send("ab9nq.william@gmail.com", message);
+    	EMailSender::Response resp = emailSend.send("areacodeandcellphonenumber@vtext.com", message);
+    	emailSend.send("smtpgoogleaccount@gmail.com", message);
     
     	Serial.println("Sending status: ");
     
