@@ -2,7 +2,7 @@
 //
 //    Version 1.0        12/11/2020 @ 16:26 EST
 //0
-//                       ESP8266 --Internet Sump Pit Monitor, Datalogger and Dynamic Web Server   05/16/2020 @ 12:45 EDT
+//                       ESP8266 --Internet Sump Pit Monitor, Datalogger and Dynamic Web Server   
 //
 //                       NTP time routines optimized for speed by schufti  --of ESP8266.com
 //
