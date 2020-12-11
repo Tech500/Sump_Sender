@@ -451,10 +451,6 @@ void loop()
 
   }
 
-
-
-
-
   if (started == 1)
   {
 
@@ -462,8 +458,6 @@ void loop()
 
     // Open "/SERVER.TXT" for appended writing
     File log = LittleFS.open("/SERVER.TXT", "a");
-
-
 
     if (!log)
     {
@@ -854,7 +848,26 @@ void newDay()   //Collect Data for twenty-four hours; then start a new day
   {
     Serial.println("file open failed");
   }
-  
+
+  connection_state = WiFiConnect(ssid, password);
+  if(!connection_state)  // if not connected to WIFI
+  Awaits();          // constantly trying to connect
+
+  EMailSender::EMailMessage message;
+  message.subject = "Allowed --less secure operstion";
+  message.message = "Daily --email to ensure operational status";
+
+  EMailSender::Response resp = emailSend.send("cellphonenumber@vtext.com", message);  //carrier Verizon
+  emailSend.send("gmailDedicatedAccount@gmail.com", message);  //email service Gmail
+
+  Serial.println("Sending status: ");
+
+  Serial.println(resp.status);
+  Serial.println(resp.code);
+  Serial.println(resp.desc);
+
+  requested = 0;
+
 }
 
 ///////////////////////////////////////////////////////////////
