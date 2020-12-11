@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-//    Version 1.0        Adding  HTTP over TLS (HTTPS)     09/05/2020 @ 13:48 EDT
+//    Version 1.0        12/11/2020 @ 16:26 EST
 //0
 //                       ESP8266 --Internet Sump Pit Monitor, Datalogger and Dynamic Web Server   05/16/2020 @ 12:45 EDT
 //
