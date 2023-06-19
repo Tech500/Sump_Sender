@@ -32,7 +32,7 @@
 	5.  FTP for file maintence; should it be needed.
 	6.  Automatic deletion of log files.  Can be daily of weekly
 	7.  OTA Over-the-air firmware updates.
-
+	8.  Sends email and SMS alert at predetermined height of water to top of sump pit.
 */
 
 // ********************************************************************************
