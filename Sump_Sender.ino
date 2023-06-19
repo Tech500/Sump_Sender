@@ -20,6 +20,20 @@
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/*
+	Program uses ultrasonic sensing to measure distance of water from top of sump pit.
+
+	Features:
+
+	1.  Ultrasonic distance to water measuring,
+	2.  Log file of measurements at 15 minute intervals.
+	3.  Web interface display last update of water distance to top of sump pit.
+	4.  Graph of distance to top and time of data point.
+	5.  FTP for file maintence; should it be needed.
+	6.  Automatic deletion of log files.  Can be daily of weekly
+	7.  OTA Over-the-air firmware updates.
+
+*/
 
 // ********************************************************************************
 // ********************************************************************************
@@ -52,7 +66,9 @@
 uint8_t connection_state = 0;
 uint16_t reconnect_interval = 10000;
 
-EMailSender emailSend("##########@gmail.com", "##########");  //gmail address and application password
+EMailSender emailSend("**********@gmail.com", "**********");  //gmail email address and gmail application password
+
+//How to create application password  https://www.lifewire.com/get-a-password-to-access-gmail-by-pop-imap-2-1171882
 
 uint8_t WiFiConnect(const char* nSSID = nullptr, const char* nPassword = nullptr)
 {
@@ -161,16 +177,7 @@ int started;   //Used to tell if Server has started
 //use I2Cscanner to find LCD display address, in this case 3F   //https://github.com/todbot/arduino-i2c-scanner/
 //LiquidCrystal_I2C lcd(0x3F,16,2);  // set the LCD address to 0x3F for a 16 chars and 2 line display
 
-#define sonalert 9  // pin for Piezo buzzer
-
-#define online D6  //pin for online LED indicator
-
 #define BUFSIZE 64  //Size of read buffer for file download  -optimized for CC3000.
-
-float currentPressure;  //Present pressure reading used to find pressure change difference.
-float pastPressure;  //Previous pressure reading used to find pressure change difference.
-float milliBars;   //Barometric pressure in millibars
-float difference;   //change in barometric pressure drop; greater than .020 inches of mercury.
 
 //long int id = 1;  //Increments record number
 
@@ -222,8 +229,8 @@ Serial.begin(115200);
   message.subject = "Warning!!!";
   message.message = "  Sump Pump ///////////////Alert high water level warning!";
   
-  EMailSender::Response resp = emailSend.send("3173405675@vtext.com", message);
-  emailSend.send("ab9nq.william@gmail.com", message);
+  EMailSender::Response resp = emailSend.send("********@vtext.com", message);  //******* 10 digit phone number
+  emailSend.send("*********@gmail.com", message);  //*************** gmail email address
   
   Serial.println("Sending status: ");
   
@@ -851,8 +858,10 @@ void newDay()   //Collect Data for twenty-four hours; then start a new day
   message.message = "Daily --email to ensure less secure operational status";
   //If rhis gmail account is not used; will revert to more secure operation.
 
-  EMailSender::Response resp = emailSend.send("lucidw.esp8266@gmail.com", message);
-  //emailSend.send("3173405675@vtext.com", message);
+  EMailSender::Response resp = emailSend.send("*********@gmail.com", message);
+  //emailSend.send("*********@vtext.com", message);
+	
+	//List of email to SMS carriers  https://avtech.com/articles/138/list-of-email-to-sms-addresses/
   
   Serial.println("Sending status: ");
 
@@ -898,8 +907,8 @@ void sendRequestURL()  //Triggers cellphone SMS alert and email alert.
     	message.subject = "Warning High Water!!!";
       message.message = "Sump Pump /////////////// Alert high water level! //////////////////";
     
-    	EMailSender::Response resp = emailSend.send("phonenumber@vtext.com", message);  //verizon text domain
-    	emailSend.send("gmailaAddress@gmail.com", message);
+    	EMailSender::Response resp = emailSend.send("*********@vtext.com", message);  //verizon text domain
+    	emailSend.send("********@gmail.com", message);
     
     	Serial.println("Sending status: ");
     
