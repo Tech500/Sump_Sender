@@ -1,5 +1,5 @@
 //
-//   "Rain Gauge Two.ino" and  
+//   "Sump_Sender.ino" and  
 //   variableInput.h library
 //   William M. Lucid   10/06/2019   @ 15:02 EDT    
 // 
@@ -19,7 +19,10 @@ const char * udpAddress2 = "time.nist.gov";
 
 //publicIP accessiable over Internet with Port Forwarding; know the risks!!!
 //WAN IP Address.  Or use LAN IP Address --same as server ip; no Internet access. 
-#define publicIP  73,102,122,239  //Part of href link for "GET" requests
+#define publicIP  xxx,xxx,xxx,xxx  //Part of href link for "GET" requests
+
+//Find your public ipAddress:  https://whatismyipaddress.com/
+
 String LISTEN_PORT = "80"; //Part of href link for "GET" requests
 
 String linkAddress = "WANipaddress:port";  //publicIP and PORT for URL link
@@ -32,7 +35,7 @@ int PORT = 80;  //Web Server port
 //Enter "ThingSpeak.com" data here....
 //Example data; enter yout account data..
 unsigned long int myChannelNumber = 123456; 
-const char * myWriteAPIKey = "E12345";
+const char * myWriteAPIKey = "EE2345";
 
 //Server settings --all internal LAN addresses
 #define ip {10,0,0,6}
